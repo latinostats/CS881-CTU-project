@@ -58,7 +58,7 @@ table(hres$race)
 # Black/African American           Multi-racial             Other Race                  White 
 #                 444944                  22380                 544559                1334877
 
-# Q1: What is the distribution of admission types per Service area
+# Question: What is the distribution of admission types per Service area. Are they significant
 mytable<-table(hres$health_service_area,hres$type_of_admission)
 apply( 
   prop.table(mytable, 1)*100, # row percentages 
@@ -119,14 +119,15 @@ set.seed(1)
 X <- rmultinom(1, 4000, mytable)
 dim(X) <- dim(mytable)
 
-chisq.test(X) # difference in proportions is real!
+chisq.test(X) 
+# Answer: difference in proportions is significant!
 
 #      Pearson's Chi-squared test
 # 
 # data:  X
 # X-squared = 136.68, df = 40, p-value = 1.709e-12
 
-# Q2: New York provides the highest proportion of NewBorn admissions while Long Island the lowest Is there a difference
+# Question: New York provides the highest proportion of NewBorn admissions while Long Island the lowest Is there a difference
 # that could explain that?
 NYdata<-hres[hres$health_service_area == "New York City",]
 CrossTable(NYdata$race,NYdata$type_of_admission, prop.chisq=FALSE, 
