@@ -126,7 +126,7 @@ chisq.test(X) # difference in proportions is real!
 # data:  X
 # X-squared = 136.68, df = 40, p-value = 1.709e-12
 
-# Q2: New York provides the highest proportion of NewBorn admissions while Long Island the highest. Is there a difference
+# Q2: New York provides the highest proportion of NewBorn admissions while Long Island the lowest Is there a difference
 # that could explain that?
 NYdata<-hres[hres$health_service_area == "New York City",]
 CrossTable(NYdata$race,NYdata$type_of_admission, prop.chisq=FALSE, 
